@@ -11,6 +11,7 @@ from google.cloud import firestore
 import pytz  # Import pytz for time zone conversion
 
 # Load environment variables from .env file
+# Ensure to enable Geocoding API
 load_dotenv()
 
 # Set the GOOGLE_APPLICATION_CREDENTIALS environment variable
@@ -27,11 +28,12 @@ url = 'https://04v62bn13i-dsn.algolia.net/1/indexes/MB_locator_prod/query?x-algo
 
 # Define the payloads for the POST request
 payloads = [
-    {"query":"Oriental Mindoro"} # done
+    {"query": "Angeles City pampanga"} # done
    # {"query": "Pampanga"}
    # {"query": "Makati City metro manila"},
    # {"query": "Taguig City metro manila"},
    # {"query": "Pasig City metro manila"},
+   # {"query":"Oriental Mindoro"}
     # Add more payloads as needed
 ]
 
@@ -126,7 +128,8 @@ def transform_item(item):
         },
         'name': item['name'],
         'qrCode': 'https://example.com/qrcode/ ',
-        'status': 'online'
+        'status': 'online',
+        'addedBy': 'admin',
     }
 
 # Function to create an object from the response data
